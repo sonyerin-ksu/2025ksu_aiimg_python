@@ -27,22 +27,17 @@ def print_rabbit():
     for line in rabbit:
         print(line)
 
-# for i in range(5):
-while True: # 무한반복(계속 참)
+def play_game():
     print("그림 출력 프로그램")
     print("=====================")
     print("1. 고양이")
     print("2. 곰돌이")
     print("3. 토끼")
     print("=====================")
-    # n = 3
-    n = int(input("선택(0을 입력하면 종료): "))
-    # 0이 입력되면 프로그램 종료
-    if n == 0:
-        print("프로그램을 종료합니다.")
-        break
+    n = int(input("선택: "))
+   
     # 만약에 1을 입력하면 1번에 해당하는 캐릭터 출력
-    elif n == 1:
+    if n == 1:
         print("고양이")
         print_cat()
     # 2를 입력하면 2번 캐릭터 출력
@@ -58,6 +53,13 @@ while True: # 무한반복(계속 참)
         print("해당 숫자에 대한 동물이 없습니다")
 
 # 동물 그림 출력 프로그램이 총 5번 반복 실행될 수 있게 만드시오.
+for i in range(5):
+   play_game()
 
 # 위 프로그램을 완성한한 사람은 프로그램이 계속(무한) 반복하게 하고
 # 만약에 0을 입력하면 종료되는 프로그램을 만드시오.
+while True: # 무한반복(계속 참)
+   play_game()
+
+
+
