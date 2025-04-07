@@ -19,9 +19,9 @@ def print_bear():
 
 def print_rabbit():
     rabbit = [
-        "  (\\_/)",
-        "  (o o)",
-        "  ( > )"
+        '(\(\\' ,
+        '( -.-)',
+        'o_(")(")'
     ]
     
     for line in rabbit:
