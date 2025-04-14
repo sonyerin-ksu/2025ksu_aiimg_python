@@ -1,3 +1,10 @@
+from rich.console import Console
+from rich.text import Text
+from rich.emoji import Emoji
+
+console = Console()
+
+
 # 아스키 코드 그림 출력하기
 def print_cat():
     cat = [
@@ -14,26 +21,39 @@ def print_bear():
     bear = [
         "ʕ•ᴥ•ʔ"
         ]
+
+    styled_bear = Text()
     for  line in bear:
-        print(line)
+        styled_bear.append(line + "\n", style="yellow")
+
+    console.print(styled_bear)
 
 def print_rabbit():
     rabbit = [
-        r'(\(\\' ,
+        '(\\(\\' ,
         '( -.-)',
         'o_(")(")'
     ]
     
+    # 텍스트 스타일 적용
+    styled_rabbit = Text()
     for line in rabbit:
-        print(line)
+        styled_rabbit.append(line + "\n", style="bold #ff69b4")
+
+    # Panel 없이, 그냥 텍스트 출력
+    console.print(styled_rabbit)
+
+    # for line in rabbit:
+        # print(line)
 
 # 이 함수를 수정하여 두 개의 프로그램이 될 수 있게 만드시오.
+
 def play_game(n):
     print("그림 출력 프로그램")
     print("=====================")
-    print("1. 고양이")
-    print("2. 곰돌이")
-    print("3. 토끼")
+    console.print(Emoji.replace("1. 고양이:cat:"))
+    console.print(Emoji.replace("2. 곰돌이:bear:"))
+    console.print(Emoji.replace("3. 토끼:rabbit:"))
     print("=====================")
     # n = int(input("선택: "))
 
@@ -43,15 +63,15 @@ def play_game(n):
 
     # 만약에 1을 입력하면 1번에 해당하는 캐릭터 출력
     if n == 1:
-        print("고양이")
+        console.print(Emoji.replace("고양이:cat:"))
         print_cat()
     # 2를 입력하면 2번 캐릭터 출력
     elif n == 2:
-        print("곰돌이")
+        console.print(Emoji.replace("곰돌이:bear:"))
         print_bear()
     # 3을 입력하면 3번 캐릭터 출력
     elif n == 3:
-        print("토끼")
+        console.print(Emoji.replace("토끼:rabbit:"))
         print_rabbit()
     # 잘못 입력하면 잘못 입력했다고 출력
     else:
@@ -73,7 +93,7 @@ while True: # 무한반복(계속 참)
         n_str = input("선택(1-3), 종료(0): ")
         n = int(n_str) # 여기서 ValueError 발생 가능
     except ValueError:
-        print("잘못된 입력입니다. 숫자를 입력해주세요.")
+        print([underline red]"잘못된 입력입니다. 숫자를 입력해주세요."[f])
         continue # 다시 입력 받기 위해 반복문 처음으로 돌아감
 
     if n == 0:
