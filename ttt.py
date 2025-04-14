@@ -56,3 +56,26 @@ console = Console()
 # 곰돌이와 고양이 이모지 사용
 console.print(Emoji.replace("곰돌이 이모지: :bear:"))
 console.print(Emoji.replace("고양이 이모지: :cat:"))
+console.print(Emoji.replace(":wave:"))
+
+from rich.console import Console
+
+console = Console()
+
+def print_text_with_background():
+    # 텍스트 색상: white, 배경색: sky_blue1
+    console.print("하늘색 배경에 흰색 텍스트!", style="white on sky_blue1")
+
+print_text_with_background()
+
+from rich.console import Console
+
+console = Console()
+
+def print_italic_gray_text():
+    # 회색 텍스트에 기울임꼴 적용
+    console.print("기울어진 회색 텍스트!", style="italic #D3D3D3")
+
+print_italic_gray_text()
+
+

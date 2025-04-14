@@ -15,7 +15,7 @@ logger = logging.getLogger("rich")
 
 logger.info("이건 정보 로그입니다.")
 
-# 표 만들기
+# 표(table) 만들기
 from rich.table import Table
 from rich.console import Console
 
@@ -52,7 +52,7 @@ import time
 for step in track(range(10), description="처리 중..."):
     time.sleep(0.3)
 
-#이모지 사용
+# 이모지 사용
 from rich.console import Console
 from rich.emoji import Emoji
 
@@ -62,3 +62,7 @@ console = Console()
 console.print(Emoji.replace("곰돌이 이모지: :bear:"))
 console.print(Emoji.replace("고양이 이모지: :cat:"))
 
+# 판넬 사용용
+from rich.panel import Panel
+
+console.print(Panel("귀염뽀짝 토끼 🐰"))

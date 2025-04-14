@@ -1,6 +1,12 @@
 from rich.console import Console
 from rich.text import Text
 from rich.emoji import Emoji
+from rich.panel import Panel
+from rich.progress import track
+import time
+
+for step in track(range(10), description="준비 중..."):
+    time.sleep(0.3)
 
 console = Console()
 
@@ -13,8 +19,11 @@ def print_cat():
         " > ^ <  "
     ]
     
-    for line in cat:
-        print(line)
+    styled_cat = Text()
+    for  line in cat:
+        styled_cat.append(line + "\n", style="sky_blue1")
+
+    console.print(styled_cat)
 
 
 def print_bear():
@@ -51,9 +60,9 @@ def print_rabbit():
 def play_game(n):
     print("그림 출력 프로그램")
     print("=====================")
-    console.print(Emoji.replace("1. 고양이:cat:"))
-    console.print(Emoji.replace("2. 곰돌이:bear:"))
-    console.print(Emoji.replace("3. 토끼:rabbit:"))
+    console.print(Emoji.replace("[bold sky_blue1]1. 고양이:cat:[/bold sky_blue1]"))
+    console.print(Emoji.replace("[bold yellow]2. 곰돌이:bear:[/bold yellow]"))
+    console.print(Emoji.replace("[bold #ff69b4]3. 토끼:rabbit:[/bold #ff69b4]"))
     print("=====================")
     # n = int(input("선택: "))
 
@@ -63,19 +72,19 @@ def play_game(n):
 
     # 만약에 1을 입력하면 1번에 해당하는 캐릭터 출력
     if n == 1:
-        console.print(Emoji.replace("고양이:cat:"))
+        console.print(Emoji.replace("[bold sky_blue1]고양이:cat:[/bold sky_blue1]"))
         print_cat()
     # 2를 입력하면 2번 캐릭터 출력
     elif n == 2:
-        console.print(Emoji.replace("곰돌이:bear:"))
+        console.print(Emoji.replace("[bold yellow]곰돌이:bear:[/bold yellow]"))
         print_bear()
     # 3을 입력하면 3번 캐릭터 출력
     elif n == 3:
-        console.print(Emoji.replace("토끼:rabbit:"))
+        console.print(Emoji.replace("[bold #ff69b4]토끼:rabbit:[/bold #ff69b4]"))
         print_rabbit()
     # 잘못 입력하면 잘못 입력했다고 출력
     else:
-        print("해당 숫자에 대한 동물이 없습니다")
+        console.print("[italic #D3D3D3]*해당 숫자에 대한 동물이 없습니다[/italic #D3D3D3]")
 
 # 동물 그림 출력 프로그램이 총 5번 반복 실행될 수 있게 만드시오.
 # print("5번 출력 프로그램 시작")
@@ -86,14 +95,14 @@ def play_game(n):
 
 # 위 프로그램을 완성한한 사람은 프로그램이 계속(무한) 반복하게 하고
 # 만약에 0을 입력하면 종료되는 프로그램을 만드시오.
-print("0을 입력하면 종료 프로그램 시작")
+console.print(Panel("0을 입력하면 종료 프로그램 시작"))
 while True: # 무한반복(계속 참)
     # 만약에 0이면 break
     try:
         n_str = input("선택(1-3), 종료(0): ")
         n = int(n_str) # 여기서 ValueError 발생 가능
     except ValueError:
-        print([underline red]"잘못된 입력입니다. 숫자를 입력해주세요."[f])
+        console.print("[underline red]잘못된 입력입니다. 숫자를 입력해주세요.[/underline red]")
         continue # 다시 입력 받기 위해 반복문 처음으로 돌아감
 
     if n == 0:
@@ -101,5 +110,5 @@ while True: # 무한반복(계속 참)
     play_game(n) # 문자를 받으면 "잘못 입력" 처리
    
 
-print("0을 입력하면 종료 프로그램 종료")
+console.print(Panel(Emoji.replace("0을 입력하면 종료 프로그램 종료:wave:")))
 
