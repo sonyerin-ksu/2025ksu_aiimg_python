@@ -1,9 +1,14 @@
 from rich.console import Console
+# 텍스트 꾸미기
 from rich.text import Text
+# 이모티콘 적용
 from rich.emoji import Emoji
+# 판넬
 from rich.panel import Panel
+# 로딩 애니메이션
 from rich.progress import track
 import time
+
 
 for step in track(range(10), description="준비 중..."):
     time.sleep(0.3)
@@ -49,11 +54,27 @@ def print_rabbit():
     for line in rabbit:
         styled_rabbit.append(line + "\n", style="bold #ff69b4")
 
-    # Panel 없이, 그냥 텍스트 출력
     console.print(styled_rabbit)
 
     # for line in rabbit:
         # print(line)
+
+def print_sheep():
+    sheep = [
+        """
+        .　,〜⌒⌒､⌒ヽ
+        (⊂,~〜､⊃）） ) )
+        ((ξ･ﻌ ･๑Ҙ)　)　）
+        (　~　ノ(　ﾉ ﾉ
+        　ヽ〜 〜 ノノ
+        　　UU￣UU"""
+        ]
+
+    styled_sheep = Text()
+    for  line in sheep:
+        styled_sheep.append(line + "\n", style="#B464eb")
+
+    console.print(styled_sheep)
 
 # 이 함수를 수정하여 두 개의 프로그램이 될 수 있게 만드시오.
 
@@ -63,6 +84,7 @@ def play_game(n):
     console.print(Emoji.replace("[bold sky_blue1]1. 고양이:cat:[/bold sky_blue1]"))
     console.print(Emoji.replace("[bold yellow]2. 곰돌이:bear:[/bold yellow]"))
     console.print(Emoji.replace("[bold #ff69b4]3. 토끼:rabbit:[/bold #ff69b4]"))
+    console.print(Emoji.replace("[bold #B464eb]4. 양:sheep:[/bold #B464eb]"))
     print("=====================")
     # n = int(input("선택: "))
 
@@ -82,6 +104,10 @@ def play_game(n):
     elif n == 3:
         console.print(Emoji.replace("[bold #ff69b4]토끼:rabbit:[/bold #ff69b4]"))
         print_rabbit()
+    # 4를 입력하면 4번 캐릭터 출력
+    elif n == 4:
+        console.print(Emoji.replace("[bold #B464eb]양:sheep:[/bold #B464eb]"))
+        print_sheep()
     # 잘못 입력하면 잘못 입력했다고 출력
     else:
         console.print("[italic #D3D3D3]*해당 숫자에 대한 동물이 없습니다[/italic #D3D3D3]")
@@ -99,7 +125,7 @@ console.print(Panel("0을 입력하면 종료 프로그램 시작"))
 while True: # 무한반복(계속 참)
     # 만약에 0이면 break
     try:
-        n_str = input("선택(1-3), 종료(0): ")
+        n_str = input("선택(1-4), 종료(0): ")
         n = int(n_str) # 여기서 ValueError 발생 가능
     except ValueError:
         console.print("[underline red]잘못된 입력입니다. 숫자를 입력해주세요.[/underline red]")
